@@ -6,13 +6,13 @@ class Display:
 
     # Default values
     default_mode = "clock"
-    LCD_CS = 2
-    LCD_RST = 3
-    LCD_A0 = 4
-    LCD_CLK = 27
-    LCD_SI = 17
+    LCD_CS = 8
+    LCD_RST = 25
+    LCD_A0 = 24
+    LCD_CLK = 11
+    LCD_SI = 10
 
-    def __init__(self, mode=Display.default_mode, LCD_CS=Display.LCD_CS, LCD_RST=Display.LCD_RST, LCD_A0=Display.LCD_A0, LCD_CLK=Display.LCD_CLK, LCD_SI=Display.LCD_SI):
+    def __init__(self, mode=default_mode, LCD_CS=LCD_CS, LCD_RST=LCD_RST, LCD_A0=LCD_A0, LCD_CLK=LCD_CLK, LCD_SI=LCD_SI):
         # Set default display mode
         self.mode = mode
         print "Display mode: " + self.mode
