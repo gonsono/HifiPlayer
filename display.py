@@ -2,7 +2,7 @@ import RPi.GPIO as GPIO
 import time
 
 class Display:
-    """Display class that allow ineraction with a LCD Screen based on ST7565 controller"""
+    """Display class that allow interaction with a LCD Screen based on ST7565 controller"""
 
     # Default values
     default_mode = "clock"
