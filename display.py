@@ -5,7 +5,7 @@ class Display:
     """Display class that allow interaction with a LCD Screen based on ST7565 controller"""
 
     # Default values
-    default_mode = "clock"
+    default_mode = "volumio"
     LCD_CS = 8
     LCD_RST = 25
     LCD_A0 = 24
@@ -15,7 +15,7 @@ class Display:
     def __init__(self, mode=default_mode, LCD_CS=LCD_CS, LCD_RST=LCD_RST, LCD_A0=LCD_A0, LCD_CLK=LCD_CLK, LCD_SI=LCD_SI):
         # Set default display mode
         self.mode = mode
-        print "Display mode: " + self.mode
+        print "Display mode set to " + self.mode
 
         # Init GPIO
         self.LCD_CS = LCD_CS
@@ -241,17 +241,3 @@ ASCII168 = (
     (0x00, 0x06, 0x01, 0x01, 0x02, 0x02, 0x04, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00),  # "~",95
 )
 
-def main():
-    disp = Display(LCD_CS=0,LCD_A0=0,LCD_CLK=0,LCD_RST=0,LCD_SI=0)
-    disp.lcd_ascii168_string(0, 0, "Love theme")
-    disp.lcd_ascii168_string(0, 2, "Barry White")
-    disp.lcd_ascii168_string(0, 4, "[--------      ]")
-    disp.lcd_ascii168_string(0, 6, "Spot.  ||  []< 25")
-    try:
-        while True:
-            time.sleep(1.0)
-    except:
-        GPIO.cleanup()
-
-
-main()
