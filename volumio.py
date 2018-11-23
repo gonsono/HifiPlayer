@@ -11,9 +11,6 @@ class Volumio:
         self.url = url
         if self.update_status():
             print "Connected to Volumio on " + self.url
-        while True:
-            self.update_status()
-            time.sleep(1)
 
     def update_status(self):
         """Get status of Volumio"""
@@ -22,12 +19,16 @@ class Volumio:
         except:
             print("Could not get Volumio state")
             return False
+        self.artist = " "
+        self.duration = 0
         self.title = state["title"]
-        self.artist = state["artist"]
-        self.duration = state["duration"]
-        self.seek = int(state["seek"]/1000)
+        if "artist" in state:
+            self.artist = state["artist"]
+        if "duration" in state:
+            self.duration = state["duration"]
+        self.seek = state["seek"]/1000.0
         self.volume = state["volume"]
-        self.service = state["service"]
+        self.type = state["trackType"]
         self.status = state["status"]
         self.mute = state["mute"]
         return True
@@ -56,9 +57,3 @@ class Volumio:
             return False
         return True
 
-# State example from Volumio API
-#{"status":"play","position":0,"title":"La guerra è finita","artist":"Baustelle",
-#"album":"La malavita","albumart":"/albumart?web=Baustelle/La%20malavita/extralarge&path=%2FNAS%2FMusic%2FBaustelle%20-%20La%20Malavita",
-#"uri":"mnt/NAS/Music/Baustelle - La Malavita/02 la guerra è finita.mp3","trackType":"mp3","seek":4224,"duration":262,
-#"samplerate":"44.1 KHz","bitdepth":"24 bit","channels":2,"random":null,"repeat":null,
-#"repeatSingle":false,"consume":false,"volume":41,"mute":false,"stream":"mp3","updatedb":false,"volatile":false,"service":"mpd"}
