@@ -47,10 +47,10 @@ class Volumio:
             return False
         return True
 
-    def volume_step(self, step):
-        """Change volume, step being minus ou plus"""
+    def set_volume(self, value):
+        """Set volume to specified value"""
         try:
-            requests.get(self.url+"/api/v1/commands/?cmd=volume&volume="+step).json()
+            requests.get(self.url+"/api/v1/commands/?cmd=volume&volume="+str(value))
             self.update_status()
         except:
             print("Could not set volume")
