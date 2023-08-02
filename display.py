@@ -17,7 +17,7 @@ class Display:
     def __init__(self, mode=default_mode, LCD_CS=LCD_CS, LCD_RST=LCD_RST, LCD_A0=LCD_A0, LCD_CLK=LCD_CLK, LCD_SI=LCD_SI):
         # Set default display mode
         self.mode = mode
-        print "Display mode set to " + self.mode
+        print("Display mode set to " + self.mode)
 
         # Init GPIO
         self.LCD_CS = LCD_CS
