@@ -10,7 +10,7 @@ class Volumio:
     def __init__(self, url=url):
         self.url = url
         if self.update_status():
-            print "Connected to Volumio on " + self.url
+            print("Connected to Volumio on " + self.url)
 
     def update_status(self):
         """Get status of Volumio"""
