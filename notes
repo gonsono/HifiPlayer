@@ -1,0 +1,13 @@
+* git clone https://github.com/gonsono/HifiPlayer.git
+* python3 ./get-pip.py
+* python3 -m pip install --user virtualenv
+* sudo rm /usr/bin/python
+* sudo ln -s python3 /usr/bin/python
+* python -m virtualenv venv
+* . venv/bin/activate
+* pip install pipreqs
+* pipreqs .
+* sudo apt update
+* sudo apt install build-essential
+* sudo apt-get install python3-dev
+* pip install RPi.GPIO

@@ -28,7 +28,8 @@ class Volumio:
             self.duration = state["duration"]
         self.seek = state["seek"]/1000.0
         self.volume = state["volume"]
-        self.type = state["trackType"]
+        # self.type = state["trackType"]
+        self.type = "spotify"
         self.status = state["status"]
         self.mute = state["mute"]
         return True
