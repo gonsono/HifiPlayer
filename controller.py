@@ -1,17 +1,17 @@
 import time
-import threading
+# import threading
 # import signal
 import logging
-from multiprocessing import Queue
+# from multiprocessing import Queue
 from display import Display
 from volumio import Volumio
 # from rotaryencoder import RotaryEncoder
 # import RPi.GPIO as GPIO
 import pictures as pics
 
-QUEUE = Queue()
-EVENT = threading.Event()
-DEBUG = False
+# QUEUE = Queue()
+# EVENT = threading.Event()
+# DEBUG = False
 
 # Display functions
 def get_bar(duration, seek):
@@ -83,6 +83,7 @@ def main():
         # EVENT.wait(100)
         # consume_queue()
         # EVENT.clear()
+        disp.lcd_clear()
         logging.debug("updating display")
         disp.lcd_ascii168_string(0, 4, get_formatted_title(hifi.title))
         disp.lcd_ascii168_string(0, 6, hifi.artist)
