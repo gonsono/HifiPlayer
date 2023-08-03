@@ -89,7 +89,7 @@ class Display:
         self.lcd_clear()
 
     def lcd_picture(self, xPos, yPos, bmp, width):
-        nb_page = len(bmp)/width
+        nb_page = int(len(bmp)/width)
         for i in range(0, nb_page):
             self.lcd_set_page(yPos+i,xPos)
             for j in range(width*i, width*(i+1)):
