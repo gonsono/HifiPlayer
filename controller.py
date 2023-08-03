@@ -101,7 +101,7 @@ def main():
             disp.lcd_picture(0,0,pics.RADIO,32)
         elif hifi.type == "spotify":
             disp.lcd_picture(0,0,pics.SPOTIFY,32)
-        time.sleep(0.5)
+        time.sleep(2)
 #    except Exception as e:
 #        logging.error(e)
 #        GPIO.cleanup()
