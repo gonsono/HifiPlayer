@@ -5,7 +5,7 @@ from multiprocessing import Queue
 from display import Display
 from volumio import Volumio
 from rotaryencoder import RotaryEncoder
-import RPi.GPIO as GPIO
+# import RPi.GPIO as GPIO
 import pictures as pics
 
 QUEUE = Queue()

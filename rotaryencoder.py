@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 
 import os
-import signal
-import subprocess
-import sys
-import threading
+# import signal
+# import subprocess
+# import sys
+# import threading
 
 from RPi import GPIO
-from multiprocessing import Queue
+# from multiprocessing import Queue
 
 class RotaryEncoder:
 

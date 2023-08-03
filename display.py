@@ -1,6 +1,6 @@
 import RPi.GPIO as GPIO
-import time
-import numpy as np
+# import time
+# import numpy as np
 import characters as chars
 
 class Display:

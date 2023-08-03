@@ -1,5 +1,5 @@
 import requests
-import time
+# import time
 
 class Volumio:
     """Display class that allow interaction with Volumio"""
