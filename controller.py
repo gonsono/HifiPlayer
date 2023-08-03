@@ -79,9 +79,11 @@ def main():
 #    try:
     while True:
         hifi.update_status()
-        EVENT.wait(100)
-        consume_queue()
-        EVENT.clear()
+        logging.debug("type:" + hifi.type + " - title: " + hifi.title + " - duration: " + hifi.duration + " - seek: " + hifi.seek )
+        # EVENT.wait(100)
+        # consume_queue()
+        # EVENT.clear()
+        logging.debug("updating display")
         disp.lcd_ascii168_string(0, 4, get_formatted_title(hifi.title))
         disp.lcd_ascii168_string(0, 6, hifi.artist)
         if hifi.duration > 0:
