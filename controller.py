@@ -69,7 +69,8 @@ def main():
 
     # Initialize Rotary Encoder
     enc  = RotaryEncoder(12, 16, callback=on_turn)
-    vol = Volume(hifi)
+    # vol = Volume(hifi)
+    vol = 10
     signal.signal(signal.SIGINT, on_exit)
 
 #    try:
