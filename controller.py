@@ -79,7 +79,7 @@ def main():
 #    try:
     while True:
         hifi.update_status()
-        logging.debug("type:" + hifi.type + " - title: " + hifi.title + " - duration: " + hifi.duration + " - seek: " + hifi.seek )
+        logging.debug("type:" + hifi.type + " - title: " + hifi.title + " - duration: " + str(hifi.duration) + " - seek: " + str(hifi.seek) )
         # EVENT.wait(100)
         # consume_queue()
         # EVENT.clear()
