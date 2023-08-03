@@ -1,10 +1,11 @@
 import time
 import threading
 import signal
+import logging
 from multiprocessing import Queue
 from display import Display
 from volumio import Volumio
-from rotaryencoder import RotaryEncoder
+# from rotaryencoder import RotaryEncoder
 # import RPi.GPIO as GPIO
 import pictures as pics
 
@@ -24,54 +25,56 @@ def get_formatted_title(title):
         formatted_title = title
     return formatted_title
 
-# Rotary Encoder functions
+# # Rotary Encoder functions
 
-def debug(str):
-    if not DEBUG:
-        return
-    print(str)
+# def debug(str):
+#     if not DEBUG:
+#         return
+#     logging.(str)
 
-def on_turn(delta):
-    QUEUE.put(delta)
-    EVENT.set()
+# def on_turn(delta):
+#     QUEUE.put(delta)
+#     EVENT.set()
 
-def consume_queue():
-    while not QUEUE.empty():
-        delta = QUEUE.get()
-        handle_delta(delta)
+# def consume_queue():
+#     while not QUEUE.empty():
+#         delta = QUEUE.get()
+#         handle_delta(delta)
 
-def handle_delta(delta):
-    if v.is_muted:
-        debug("Unmuting")
-        v.toggle()
-    if delta == 1:
-        vol = v.up()
-    else:
-        vol = v.down()
-    print("Set volume to: {}".format(vol))
+# def handle_delta(delta):
+#     if v.is_muted:
+#         debug("Unmuting")
+#         v.toggle()
+#     if delta == 1:
+#         vol = v.up()
+#     else:
+#         vol = v.down()
+#     logging.info("Set volume to: {}".format(vol))
 
-def on_press(value):
-    v.toggle()
-    print("Toggled mute to: {}".format(v.is_muted))
-    EVENT.set()
+# def on_press(value):
+#     v.toggle()
+#     logging.info("Toggled mute to: {}".format(v.is_muted))
+#     EVENT.set()
 
-def on_exit(a, b):
-    print("Exiting...")
-    encoder.destroy()
-    sys.exit(0)
+# def on_exit(a, b):
+#     logging.info("Exiting...")
+#     encoder.destroy()
+#     sys.exit(0)
 
 
 # Main function
 def main():
 
+    logging.basicConfig(filename='controller.log', encoding='utf-8', level=logging.DEBUG)
+
     hifi = Volumio(url="http://localhost:3000")
     disp = Display(LCD_CS=8,LCD_RST=25,LCD_A0=24,LCD_CLK=11,LCD_SI=10)
 
     # Initialize Rotary Encoder
-    enc  = RotaryEncoder(12, 16, callback=on_turn)
+    # enc  = RotaryEncoder(12, 16, callback=on_turn)
     # vol = Volume(hifi)
     vol = 10
-    signal.signal(signal.SIGINT, on_exit)
+    # signal.signal(signal.SIGINT, on_exit)
 
 #    try:
     while True:
@@ -97,7 +100,7 @@ def main():
             disp.lcd_picture(0,0,pics.SPOTIFY,32)
         time.sleep(0.5)
 #    except Exception as e:
-#        print(e)
+#        logging.error(e)
 #        GPIO.cleanup()
 
 

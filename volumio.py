@@ -1,4 +1,5 @@
 import requests
+import logging
 # import time
 
 class Volumio:
@@ -10,14 +11,14 @@ class Volumio:
     def __init__(self, url=url):
         self.url = url
         if self.update_status():
-            print("Connected to Volumio on " + self.url)
+            logging.info("Connected to Volumio on " + self.url)
 
     def update_status(self):
         """Get status of Volumio"""
         try:
             state = requests.get(self.url+"/api/v1/getstate").json()
         except:
-            print("Could not get Volumio state")
+            logging.error("Could not get Volumio state")
             return False
         self.artist = " "
         self.duration = 0
@@ -44,7 +45,7 @@ class Volumio:
             requests.get(self.url+"/api/v1/commands/?cmd=volume&volume="+toggle).json()
             self.update_status()
         except:
-            print("Could not toggle mute/unmute")
+            logging.error("Could not toggle mute/unmute")
             return False
         return True
 
@@ -54,7 +55,7 @@ class Volumio:
             requests.get(self.url+"/api/v1/commands/?cmd=volume&volume="+str(value))
             self.update_status()
         except:
-            print("Could not set volume")
+            logging.error("Could not set volume")
             return False
         return True
 
