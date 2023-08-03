@@ -89,11 +89,11 @@ def main():
         disp.lcd_ascii168_string(0, 6, hifi.artist)
         if hifi.duration > 0:
             disp.lcd_progress(34,0,0)
-            for i in range(36, 36 + int((hifi.seek / hifi.duration) * 92)):
-                disp.lcd_progress(i,0,1)
-            if (hifi.seek < 1) and (i > 5):
-                for i in range(36, 126):
-                    disp.lcd_progress(i,0,3)
+            # for i in range(36, 36 + int((hifi.seek / hifi.duration) * 92)):
+            #     disp.lcd_progress(i,0,1)
+            # if (hifi.seek < 1) and (i > 5):
+            #     for i in range(36, 126):
+            #         disp.lcd_progress(i,0,3)
             disp.lcd_progress(126,0,2)
         disp.lcd_ascii168_string(0, 2, " " * (16-len(str(hifi.volume))) + str(hifi.volume))
         disp.lcd_picture(95,2,pics.VOLUME,16)
