@@ -1,6 +1,6 @@
 import time
 import threading
-import signal
+# import signal
 import logging
 from multiprocessing import Queue
 from display import Display
@@ -65,7 +65,7 @@ def get_formatted_title(title):
 # Main function
 def main():
 
-    logging.basicConfig(filename='controller.log', encoding='utf-8', level=logging.DEBUG)
+    logging.basicConfig(filename='controller.log', level=logging.DEBUG)
 
     hifi = Volumio(url="http://localhost:3000")
     disp = Display(LCD_CS=8,LCD_RST=25,LCD_A0=24,LCD_CLK=11,LCD_SI=10)
