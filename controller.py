@@ -79,7 +79,7 @@ def main():
 #    try:
     while True:
         hifi.update_status()
-        EVENT.wait(1200)
+        EVENT.wait(100)
         consume_queue()
         EVENT.clear()
         disp.lcd_ascii168_string(0, 4, get_formatted_title(hifi.title))
