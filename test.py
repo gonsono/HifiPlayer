@@ -36,6 +36,7 @@ def main():
         disp.lcd_ascii168_string(0, 6, current["artist"])
         disp.lcd_picture(0,0,pics.SPOTIFY,32)
         disp.lcd_picture(95,2,pics.PLAY,8)
+        disp.lcd_picture(112,2,pics.PAUSE,8)
         time.sleep(2)
 
 main()
