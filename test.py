@@ -13,7 +13,7 @@ def get_formatted_title(title):
     return formatted_title
 
 def get_time():
-    current_time = strftime("%H:%M")
+    current_time = time.strftime("%H:%M")
     return current_time
 
 # Main function
