@@ -12,7 +12,9 @@ def get_formatted_title(title):
         formatted_title = title
     return formatted_title
 
-
+def get_time():
+    current_time = strftime("%H:%M")
+    return current_time
 
 # Main function
 def main():
@@ -35,6 +37,7 @@ def main():
         disp.lcd_ascii168_string(0, 4, get_formatted_title(current["title"]))
         disp.lcd_ascii168_string(0, 6, current["artist"])
         disp.lcd_picture(0,0,pics.SPOTIFY,32)
+        disp.lcd_ascii168_string(34, 2, get_time())
         disp.lcd_picture(95,2,pics.PLAY,8)
         disp.lcd_picture(112,2,pics.PAUSE,8)
         time.sleep(2)
