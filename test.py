@@ -35,7 +35,7 @@ def main():
         # disp.lcd_picture(0,0,pics.SPOTIFY,32)
         disp.lcd_ascii168_string(34, 0, get_time())
         if current["state"] == "paused":
-            disp.lcd_picture(112,10,pics.PAUSE,8)
+            disp.lcd_picture(112,5,pics.PAUSE,8)
         elif  current["state"] == "playing":
             disp.lcd_picture(112,20,pics.PLAY,8)
         time.sleep(2)
