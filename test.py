@@ -2,7 +2,7 @@ import time
 import logging
 from display import Display
 import pictures as pics
-import currentberry as current
+import hifiberry as hifi
 
 # Display functions
 def get_formatted_title(title):
