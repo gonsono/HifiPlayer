@@ -29,6 +29,7 @@ def main():
     disp = Display(LCD_CS=8,LCD_RST=25,LCD_A0=24,LCD_CLK=11,LCD_SI=10)
     hifi_url = "http://127.0.0.1:81"
 
+    disp.lcd_clear()
     while True:
         current = hifi.get_status(hifi_url)
         logging.debug("type:" + current["type"] + " - title: " + current["title"])
