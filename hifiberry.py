@@ -6,7 +6,7 @@ def get_status(url):
         current = {
             "type": r["playerName"],
             "title": r["title"],
-            "artist": r["artist"]
+            "artist": r["artist"],
             "state": r["playerState"]
         }
     else:
