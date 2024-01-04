@@ -12,6 +12,8 @@ def get_formatted_title(title):
         formatted_title = title
     return formatted_title
 
+
+
 # Main function
 def main():
 
@@ -33,6 +35,7 @@ def main():
         disp.lcd_ascii168_string(0, 4, get_formatted_title(current["title"]))
         disp.lcd_ascii168_string(0, 6, current["artist"])
         disp.lcd_picture(0,0,pics.SPOTIFY,32)
+        disp.lcd_picture(95,2,pics.PLAY,8)
         time.sleep(2)
 
 main()
