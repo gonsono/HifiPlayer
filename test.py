@@ -38,7 +38,7 @@ def main():
         disp.lcd_ascii168_string(0, 6, current["artist"])
         # disp.lcd_picture(0,0,pics.SPOT28,28)
         disp.lcd_picture(0,0,pics.SPOTIFY,32)
-        disp.lcd_ascii168_string(34, 1, get_time())
+        disp.lcd_ascii168_string(34, 0, get_time())
         disp.lcd_picture(95,0,pics.PLAY,8)
         disp.lcd_picture(112,0,pics.PAUSE,8)
         time.sleep(2)
