@@ -8,7 +8,7 @@ def get_status(url):
             "title": r["title"],
             "artist": r["artist"]
         }
-    else
+    else:
         current = {
             "type": "None",
             "title": "Idle",
