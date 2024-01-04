@@ -7,5 +7,5 @@ def get_status(url):
         "title": r["title"],
         "artist": r["artist"]
     }
-    logging.debug(current)
+    # logging.debug(current)
     return current
