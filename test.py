@@ -33,7 +33,7 @@ def main():
         disp.lcd_ascii168_string(0, 6, current["artist"])
         disp.lcd_picture(2,0,pics.SPOT28,28)
         # disp.lcd_picture(0,0,pics.SPOTIFY,32)
-        disp.lcd_ascii168_string(34, 0, get_time())
+        disp.lcd_ascii168_string(50, 1, get_time())
         if current["state"] == "paused":
             disp.lcd_picture(112,1,pics.PAUSE,8)
         elif  current["state"] == "playing":
