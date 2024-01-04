@@ -30,7 +30,7 @@ def main():
 
 #    try:
     while True:
-        hifi.update_status()
+        # hifi.update_status()
         logging.debug("type:" + hifi["type"] + " - title: " + hifi["title"])
         disp.lcd_clear()
         logging.debug("updating display")
