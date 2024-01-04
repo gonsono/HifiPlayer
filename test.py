@@ -39,8 +39,8 @@ def main():
         # disp.lcd_picture(0,0,pics.SPOT28,28)
         disp.lcd_picture(0,0,pics.SPOTIFY,32)
         disp.lcd_ascii168_string(34, 4, get_time())
-        disp.lcd_picture(95,2,pics.PLAY,8)
-        disp.lcd_picture(112,2,pics.PAUSE,8)
+        disp.lcd_picture(95,1,pics.PLAY,8)
+        disp.lcd_picture(112,1,pics.PAUSE,8)
         time.sleep(2)
 
 main()
