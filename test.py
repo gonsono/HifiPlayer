@@ -20,7 +20,7 @@ def main():
 
     logging.basicConfig(filename='controller.log', level=logging.DEBUG)
 
-    hifi = Volumio(url="http://localhost:3000")
+    # hifi = Volumio(url="http://localhost:3000")
     hifi = {
         "type": "Spotify",
         "title": "Pump up the jam",
