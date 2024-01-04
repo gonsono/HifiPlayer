@@ -7,12 +7,13 @@ def get_status(url):
             "type": r["playerName"],
             "title": r["title"],
             "artist": r["artist"]
+            "state": r["playerState"]
         }
     else:
         current = {
             "type": "None",
             "title": "Idle",
-            "artist": ""
+            "artist": "",
+            "state": ""
         }
-    # logging.debug(current)
     return current
