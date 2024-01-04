@@ -20,12 +20,6 @@ def get_time():
 def main():
 
     logging.basicConfig(filename='controller.log', level=logging.DEBUG)
-
-    current = {
-        "type": "Spotify",
-        "title": "Pump up the jam",
-        "artist": "Technotronic"
-    }
     disp = Display(LCD_CS=8,LCD_RST=25,LCD_A0=24,LCD_CLK=11,LCD_SI=10)
     hifi_url = "http://127.0.0.1:81"
 
@@ -41,9 +35,9 @@ def main():
         # disp.lcd_picture(0,0,pics.SPOTIFY,32)
         disp.lcd_ascii168_string(34, 0, get_time())
         if current["state"] == "paused":
-            disp.lcd_picture(112,0,pics.PAUSE,8)
+            disp.lcd_picture(112,20,pics.PAUSE,8)
         elif  current["state"] == "playing":
-            disp.lcd_picture(112,0,pics.PLAY,8)
+            disp.lcd_picture(112,20,pics.PLAY,8)
         time.sleep(2)
 
 main()
