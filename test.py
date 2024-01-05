@@ -25,9 +25,9 @@ def main():
 
     disp.lcd_clear()
     while True:
-        new_curent = hifi.get_status(hifi_url)
-        if current != new_curent:
-            current = new_curent
+        new_current = hifi.get_status(hifi_url)
+        if current != new_current:
+            current = hifi.get_status(hifi_url)
             disp.lcd_clear()
             disp.lcd_ascii168_string(0, 4, get_formatted_title(current["title"]))
             disp.lcd_ascii168_string(0, 6, current["artist"])
