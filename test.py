@@ -24,6 +24,7 @@ def main():
     hifi_url = "http://127.0.0.1:81"
 
     disp.lcd_clear()
+    current = ""
     while True:
         new_current = hifi.get_status(hifi_url)
         if current != new_current:
