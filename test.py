@@ -32,7 +32,7 @@ def main():
             disp.lcd_clear()
             disp.lcd_ascii168_string(0, 4, get_formatted_title(current["title"]))
             disp.lcd_ascii168_string(0, 6, current["artist"])
-            if current["playerName"] == "spotify":
+            if current["type"] == "spotify":
                 disp.lcd_picture(2,0,pics.SPOT28,28)
             else:
                 disp.lcd_picture(6,1,pics.BT,20)
