@@ -23,28 +23,41 @@ def main():
     disp = Display(LCD_CS=8,LCD_RST=25,LCD_A0=24,LCD_CLK=11,LCD_SI=10)
     hifi = HifiBerry()
     disp.lcd_clear()
+    current_time = get_time()
 
     while True:
+        refresh = False
+        # Detect change in hifi object
+        hifi_hash = hash(frozenset(vars(hifi).items))
         hifi.update_status()
-        disp.lcd_clear()
-        disp.lcd_ascii168_string(0, 4, get_formatted_title(hifi.title))
-        disp.lcd_ascii168_string(0, 6, hifi.artist)
-        
-        if hifi.type == "spotify":
-            disp.lcd_picture(2,0,pics.SPOT28,28)
-        elif hifi.type == "none":
-            disp.lcd_picture(6,1,pics.NOTE,20)
-        else:
-            disp.lcd_picture(6,1,pics.BT,20)
+        new_hifi_hash = hash(frozenset(vars(hifi).items))
+        refresh = True if hifi_hash != new_hifi_hash
 
-        disp.lcd_ascii168_string(46, 1, get_time())
+        # Detect change in time
+        if current_time != get_time():
+            current_time = get_time()
+            refresh = True
 
-        if hifi.state == "paused":
-            disp.lcd_picture(112,1,pics.PAUSE,8)
-        elif  hifi.state == "playing":
-            disp.lcd_picture(112,1,pics.PLAY,8)
-        else:
-            disp.lcd_picture(106,1,pics.HEART,20)
+        if refresh:
+            disp.lcd_clear()
+            disp.lcd_ascii168_string(0, 4, get_formatted_title(hifi.title))
+            disp.lcd_ascii168_string(0, 6, hifi.artist)
+
+            if hifi.type == "spotify":
+                disp.lcd_picture(2,0,pics.SPOT28,28)
+            elif hifi.type == "none":
+                disp.lcd_picture(6,1,pics.NOTE,20)
+            else:
+                disp.lcd_picture(6,1,pics.BT,20)
+
+            disp.lcd_ascii168_string(46, 1, get_time())
+
+            if hifi.state == "paused":
+                disp.lcd_picture(112,1,pics.PAUSE,8)
+            elif  hifi.state == "playing":
+                disp.lcd_picture(112,1,pics.PLAY,8)
+            else:
+                disp.lcd_picture(106,1,pics.HEART,20)
         time.sleep(2)
 
 main()
