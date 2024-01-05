@@ -36,7 +36,7 @@ class HifiBerry:
 
     def __init__(self, url=url):
         self.url = url
-        self.last_refresh = time.time()
+        self.last_pause = 0
         if self.update_status():
             logging.info("Connected to HifiBerry on " + self.url)
 
@@ -47,10 +47,12 @@ class HifiBerry:
         except:
             logging.error("Could not get list of players")
             return False
-        print(players)
-        active = [p["state"] for p in players["players"] if p["state"]=="playing" or p["state"]=="paused"]
-        print(active)
-        if len(active)==1:
+        active = len([p["state"] for p in players["players"] if p["state"]=="playing"])
+        paused = len([p["state"] for p in players["players"] if p["state"]=="paused"])
+        if self.state == "playing" and paused == 1:
+            self.last_pause = time.time()
+
+        if (active==1) or (paused==1 and self.last_pause > time.time()-60):
             try:
                 track = requests.get(self.url + "/api/track/metadata").json()
             except:
