@@ -28,9 +28,9 @@ def main():
     while True:
         refresh = False
         # Detect change in hifi object
-        hifi_hash = hash(frozenset(vars(hifi).items))
+        hifi_hash = hash(frozenset(vars(hifi).items()))
         hifi.update_status()
-        new_hifi_hash = hash(frozenset(vars(hifi).items))
+        new_hifi_hash = hash(frozenset(vars(hifi).items()))
         if hifi_hash != new_hifi_hash:
             refresh = True
 
