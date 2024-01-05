@@ -67,8 +67,14 @@ class HifiBerry:
                 logging.error("Could not get track metadata")
                 return False
             self.type = track["playerName"]
-            self.title = track["title"]
-            self.artist = track["artist"]
+            if track["title"] is not None:
+                self.title = track["title"]
+            else:
+                self.title = ""
+            if track["artist"] is not None:
+                self.artist = track["artist"]
+            else:
+                self.artist = ""
             self.state = track["playerState"]
         else:
             logging.info("Idle")
