@@ -37,6 +37,7 @@ class HifiBerry:
     def __init__(self, url=url):
         self.url = url
         self.last_pause = 0
+        self.state = ""
         if self.update_status():
             logging.info("Connected to HifiBerry on " + self.url)
 
