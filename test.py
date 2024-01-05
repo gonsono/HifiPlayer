@@ -25,20 +25,21 @@ def main():
 
     disp.lcd_clear()
     while True:
-        current = hifi.get_status(hifi_url)
-        logging.debug("type:" + current["type"] + " - title: " + current["title"])
-        disp.lcd_clear()
-        logging.debug("updating display")
-        disp.lcd_ascii168_string(0, 4, get_formatted_title(current["title"]))
-        disp.lcd_ascii168_string(0, 6, current["artist"])
-        disp.lcd_picture(6,1,pics.BT,20)
-        # disp.lcd_picture(2,0,pics.SPOT28,28)
-        # disp.lcd_picture(0,0,pics.SPOTIFY,32)
-        disp.lcd_ascii168_string(46, 1, get_time())
-        if current["state"] == "paused":
-            disp.lcd_picture(112,1,pics.PAUSE,8)
-        elif  current["state"] == "playing":
-            disp.lcd_picture(112,1,pics.PLAY,8)
+        new_curent = hifi.get_status(hifi_url)
+        if current != new_curent:
+            current = new_curent
+            disp.lcd_clear()
+            disp.lcd_ascii168_string(0, 4, get_formatted_title(current["title"]))
+            disp.lcd_ascii168_string(0, 6, current["artist"])
+            if current["playerName"] == "spotify":
+                disp.lcd_picture(2,0,pics.SPOT28,28)
+            else:
+                disp.lcd_picture(6,1,pics.BT,20)
+            disp.lcd_ascii168_string(46, 1, get_time())
+            if current["state"] == "paused":
+                disp.lcd_picture(112,1,pics.PAUSE,8)
+            elif  current["state"] == "playing":
+                disp.lcd_picture(112,1,pics.PLAY,8)
         time.sleep(2)
 
 main()
