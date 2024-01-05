@@ -58,8 +58,6 @@ class HifiBerry:
         if self.state == "playing" and paused == 1 and active == 0:
             self.last_pause = time.time()
             logging.info("Last Pause="+str(self.last_pause))
-        # elif active == 1:
-        #     self.last_pause = time.time() + 1000000
 
         if (active==1) or (paused==1 and self.last_pause > time.time()-60):
             logging.info("Found 1 player")
