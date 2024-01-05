@@ -31,7 +31,8 @@ def main():
         hifi_hash = hash(frozenset(vars(hifi).items))
         hifi.update_status()
         new_hifi_hash = hash(frozenset(vars(hifi).items))
-        refresh = True if hifi_hash != new_hifi_hash
+        if hifi_hash != new_hifi_hash:
+            refresh = True
 
         # Detect change in time
         if current_time != get_time():
