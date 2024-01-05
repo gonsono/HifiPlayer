@@ -48,7 +48,7 @@ class HifiBerry:
             logging.error("Could not get list of players")
             return False
         print(players)
-        active = [p["state"] for p in players if p["state"]=="playing" or p["state"]=="paused"]
+        active = [p["state"] for p["players"] in players if p["state"]=="playing" or p["state"]=="paused"]
         print(active)
         if len(active)==1:
             try:
