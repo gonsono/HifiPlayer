@@ -40,6 +40,7 @@ def main():
             refresh = True
 
         if refresh:
+            logging.error("Refreshing display")
             disp.lcd_clear()
             disp.lcd_ascii168_string(0, 4, get_formatted_title(hifi.title))
             disp.lcd_ascii168_string(0, 6, hifi.artist)
