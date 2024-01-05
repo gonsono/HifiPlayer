@@ -40,6 +40,11 @@ class HifiBerry:
         self.state = ""
         if self.update_status():
             logging.info("Connected to HifiBerry on " + self.url)
+        
+        logging.info(self.type)
+        logging.info(self.title)
+        logging.info(self.artist)
+        logging.info(self.state)
 
     def update_status(self):
         """Get status of HifiBerry"""
@@ -52,8 +57,10 @@ class HifiBerry:
         paused = len([p["state"] for p in players["players"] if p["state"]=="paused"])
         if self.state == "playing" and paused == 1:
             self.last_pause = time.time()
+            logging.info("Last Pause="+str(self.last_pause))
 
         if (active==1) or (paused==1 and self.last_pause > time.time()-60):
+            logging.info("Found 1 player")
             try:
                 track = requests.get(self.url + "/api/track/metadata").json()
             except:
@@ -64,6 +71,7 @@ class HifiBerry:
             self.artist = track["artist"]
             self.state = track["playerState"]
         else:
+            logging.info("Idle")
             self.type = "none"
             self.title = ""
             self.artist = ""
