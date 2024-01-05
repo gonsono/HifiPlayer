@@ -7,7 +7,7 @@ import hifiberry as hifi
 # Display functions
 def get_formatted_title(title):
     if len(title) > 16:
-        formatted_title = title[:13]  + "..."
+        formatted_title = title[:15]  + "-"
     else:
         formatted_title = title
     return formatted_title
@@ -34,7 +34,7 @@ def main():
         disp.lcd_picture(6,1,pics.BT,20)
         # disp.lcd_picture(2,0,pics.SPOT28,28)
         # disp.lcd_picture(0,0,pics.SPOTIFY,32)
-        disp.lcd_ascii168_string(44, 1, get_time())
+        disp.lcd_ascii168_string(46, 1, get_time())
         if current["state"] == "paused":
             disp.lcd_picture(112,1,pics.PAUSE,8)
         elif  current["state"] == "playing":
