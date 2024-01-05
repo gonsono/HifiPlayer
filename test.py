@@ -12,10 +12,6 @@ def get_formatted_title(title):
         formatted_title = title
     return formatted_title
 
-def get_time():
-    current_time = time.strftime("%H:%M")
-    return current_time
-
 # Main function
 def main():
 
@@ -36,7 +32,7 @@ def main():
                 disp.lcd_picture(2,0,pics.SPOT28,28)
             else:
                 disp.lcd_picture(6,1,pics.BT,20)
-            disp.lcd_ascii168_string(46, 1, get_time())
+            disp.lcd_ascii168_string(46, 1, current["time"])
             if current["state"] == "paused":
                 disp.lcd_picture(112,1,pics.PAUSE,8)
             elif  current["state"] == "playing":
