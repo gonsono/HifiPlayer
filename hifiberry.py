@@ -1,33 +1,7 @@
 import requests
 import time
 import logging
-
-# def get_status(url, last_refresh):
-#     players = requests.get(url + "/api/player/status").json()
-#     playing = [p["state"] for p in players if p["state"]=="playing"]
-#     playing = [p["state"] for p in players if p["state"]=="playing"]
-#     if len(playing)==1:
-#         track = requests.get(url + "/api/track/metadata").json()
-#         if track["title"] is not None: 
-#             current = {
-#                 "type": track["playerName"],
-#                 "title": track["title"],
-#                 "artist": track["artist"],
-#                 "state": track["playerState"],
-#                 "time": get_time()
-#             }
-#         else:
-#             current = {
-#                 "type": "none",
-#                 "title": "",
-#                 "artist": "",
-#                 "state": "idle",
-#                 "time": get_time()
-#             }
-#     elif len(playing)==0 and last
-#     return current
-
-
+import unidecode
 
 class HifiBerry:
     """Class that allow interaction with HifiBerry API"""
@@ -68,11 +42,11 @@ class HifiBerry:
                 return False
             self.type = track["playerName"]
             if track["title"] is not None:
-                self.title = track["title"]
+                self.title = unidecode.unidecode(track["title"])
             else:
                 self.title = ""
             if track["artist"] is not None:
-                self.artist = track["artist"]
+                self.artist = unidecode.unidecode(track["artist"])
             else:
                 self.artist = ""
             self.state = track["playerState"]
